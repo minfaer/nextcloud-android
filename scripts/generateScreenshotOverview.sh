@@ -42,10 +42,10 @@ echo "</tr>"
 
 #for image in ./build/reports/shot/verification/images/*.png ; do
 for image in $(/bin/ls -1 ./screenshots/gplay/debug/*.png | grep -v _dark_ | grep -v _light_) ; do
-    cp $image build/screenshotSummary/
+    cp $image build/screenshotSummary/images/
     
     echo "<tr style='height:200px'>"
-    echo "<td><a target='_blank' href=\"$(basename $image)\"><img width=100px src=\"$(basename $image)\"/></a></td>"
+    echo "<td><a target='_blank' href=\"$(basename $image)\"><img width=100px src=\"images/$(basename $image)\"/></a></td>"
 
     while read line; do
         echo "<td>"
@@ -66,8 +66,8 @@ for image in $(/bin/ls -1 ./screenshots/gplay/debug/*.png | grep -v _dark_ | gre
             error=$((error + 1))
         elif [ -e ./build/reports/shot/verification/images/diff_$name ]; then
             # file with "diff_" prefix
-            cp ./build/reports/shot/verification/images/diff_$name build/screenshotSummary
-            echo "<a target='_blank' href=\"diff_$name\"><img width=100px src=\"diff_$name\"/></a>"
+            cp ./build/reports/shot/verification/images/diff_$name build/screenshotSummary/images/
+            echo "<a target='_blank' href=\"diff_$name\"><img width=100px src=\"images/diff_$name\"/></a>"
             error=$((error + 1))
         else 
             echo "✔"

@@ -25,7 +25,6 @@ buildscript {
         classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.17.1"
         classpath "commons-httpclient:commons-httpclient:3.1@jar" // remove after entire switch to lib v2
         classpath 'com.karumi:shot:5.10.3'
-        //classpath 'com.facebook.testing.screenshot:plugin:0.14.0'
     }
 }
 
@@ -452,5 +451,5 @@ detekt {
 }
 
 shot {
-    showOnlyFailingTestsInReports = false
+    showOnlyFailingTestsInReports = ciBuild
 }

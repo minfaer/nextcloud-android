@@ -9,7 +9,7 @@ USER=$1
 PASS=$2
 
 date=$(date +%F)
-echo "Uploaded screenshot summary to $PUBLIC_URL/$date/"
+echo "Uploaded screenshot summary to $PUBLIC_URL/$date/summary.html"
 
 cd build/screenshotSummary
 
