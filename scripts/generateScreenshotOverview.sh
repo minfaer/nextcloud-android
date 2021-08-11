@@ -45,7 +45,7 @@ for image in $(/bin/ls -1 ./screenshots/gplay/debug/*.png | grep -v _dark_ | gre
     cp $image build/screenshotSummary/images/
     
     echo "<tr style='height:200px'>"
-    echo "<td><a target='_blank' href=\"$(basename $image)\"><img width=100px src=\"images/$(basename $image)\"/></a></td>"
+    echo "<td><a target='_blank' href=\"images/$(basename $image)\"><img width=100px src=\"images/$(basename $image)\"/></a></td>"
 
     while read line; do
         echo "<td>"
