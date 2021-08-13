@@ -21,9 +21,7 @@ steps:
       - sed -i s'#showOnlyFailingTestsInReports = ciBuild#showOnlyFailingTestsInReports = false#' build.gradle
       - scripts/wait_for_emulator.sh
       - scripts/runAllScreenshotCombinations noCI false
-      - mkdir -p build/screenshotSummary/images
-      - scripts/generateScreenshotOverview.sh > build/screenshotSummary/summary.html
-      - scripts/uploadScreenshotSummary.sh $LOG_USERNAME $LOG_PASSWORD
+      - scripts/screenshotSummary.sh
   - name: notify
     image: drillster/drone-email
     settings:
