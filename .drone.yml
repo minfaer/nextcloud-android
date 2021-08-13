@@ -24,6 +24,28 @@ steps:
       - mkdir -p build/screenshotSummary/images
       - scripts/generateScreenshotOverview.sh > build/screenshotSummary/summary.html
       - scripts/uploadScreenshotSummary.sh $LOG_USERNAME $LOG_PASSWORD
+  - name: notify
+    image: drillster/drone-email
+    settings:
+      port: 587
+      from: nextcloud-drone@kaminsky.me
+      recipients_only: true
+      username:
+        from_secret: EMAIL_USERNAME
+      password:
+        from_secret: EMAIL_PASSWORD
+      recipients:
+        from_secret: EMAIL_RECIPIENTS
+      host:
+        from_secret: EMAIL_HOST
+    when:
+      event:
+        - push
+      status:
+        - failure
+      branch:
+        - master
+        - stable-*
 
 trigger:
   branch:
