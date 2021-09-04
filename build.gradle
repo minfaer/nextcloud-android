@@ -25,6 +25,7 @@ buildscript {
         classpath "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.18.1"
         classpath "commons-httpclient:commons-httpclient:3.1@jar" // remove after entire switch to lib v2
         classpath 'com.karumi:shot:5.11.2'
+        classpath 'com.facebook.testing.screenshot:plugin:0.14.0'
     }
 }
 
@@ -38,6 +39,7 @@ apply plugin: 'com.hiya.jacoco-android'
 apply plugin: 'com.github.spotbugs'
 apply plugin: 'io.gitlab.arturbosch.detekt'
 apply plugin: 'shot'
+apply plugin: 'com.facebook.testing.screenshot'
 
 println "Gradle uses Java ${Jvm.current()}"
 
@@ -266,7 +268,8 @@ dependencies {
     // dependencies for app building
     implementation 'androidx.multidex:multidex:2.0.1'
 //    implementation project('nextcloud-android-library')
-    implementation ("com.github.nextcloud:android-library:$androidLibraryVersion") {
+//    implementation ("com.github.nextcloud:android-library:$androidLibraryVersion") {
+    implementation ("com.github.minfaer:android-library:FixAssembleTimeout-SNAPSHOT") {
         exclude group: 'org.ogce', module: 'xpp3' // unused in Android and brings wrong Junit version
     }
 
@@ -376,7 +379,6 @@ dependencies {
     androidTestImplementation "net.bytebuddy:byte-buddy-android:$byteBuddyVersion"
     androidTestImplementation "io.mockk:mockk-android:1.10.4"
     androidTestImplementation 'androidx.arch.core:core-testing:2.0.1'
-    androidTestImplementation "com.facebook.testing.screenshot:core:0.13.0"
 
     // UIAutomator - for cross-app UI tests, and to grant screen is turned on in Espresso tests
     // androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
